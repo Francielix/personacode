@@ -89,7 +89,7 @@ O PersonaCode classifica o usuário em um dos 5 perfis da Tríade do Tempo, adap
 
 O PersonaCode foi desenvolvido por uma equipe de 8 pessoas, com cada membro contribuindo diretamente no código e nas diferentes frentes do projeto — desde a pesquisa da metodologia até a implementação de recursos de acessibilidade.
 
-| Nome
+| Colaboradores
 
 Franciele Couto 
 Juliano Lacerda
