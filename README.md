@@ -92,12 +92,18 @@ O PersonaCode foi desenvolvido por uma equipe de 8 pessoas, com cada membro cont
 | Colaboradores
 
 Franciele Couto 
+
 Juliano Lacerda
+
 Itallo Gustavo 
+
 Klever Baliza
+
 Yuri 
 Breno 
+
 Guilherme Roque 
+
 Tallita
 
 -------------------------------------------------------------------------------------------------------------------------------------------
