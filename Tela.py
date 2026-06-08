@@ -182,7 +182,7 @@ def tela_resultado(faixa, indice_resultado):
         ).place(relx=0.05, rely=0.54)
 
     # Card da dica
-    card_dica = ctk.CTkFrame(janela, width=1100, height=130, fg_color="#EEF4FF", border_width=2, border_color="#3071FF", corner_radius=12)
+    card_dica = ctk.CTkFrame(janela, width=1100, height=130, fg_color="#FFF8DC", border_width=2, border_color="#3071FF", corner_radius=15)
     card_dica.place(relx=0.05, rely=0.58)
     ctk.CTkLabel(card_dica, text="💡 DICA", font=("Arial", 22, "bold"), text_color="#3071FF", fg_color="transparent").place(x=20, y=12)
     ctk.CTkLabel(card_dica, text=dica, font=("Arial", 20), text_color="#333333", fg_color="transparent", wraplength=1060, justify="left").place(x=20, y=48)
