@@ -26,6 +26,12 @@ O classificador de perfil do PersonaCode é inteiramente baseado na **Tríade do
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
+# ---------- Sitemap do projeto ----------
+
+[🔗 Ver sitemap no Figma](https://www.figma.com/board/e511WVHkhReGzajyPpTbLY/Site-Map?node-id=0-1&t=ahM6U177wzQsGpA4-1)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
 # ---------- Estrutura do Projeto ----------
 
 ```
