@@ -4,7 +4,25 @@ import os
 
 #configurações da tela
 ctk.set_appearance_mode("system") 
-janela = ctk.CTk() 
+janela = ctk.CTk()
+zoom_atual = 1.0
+
+def aumentar_zoom():
+    global zoom_atual
+
+    if zoom_atual < 1.5:
+        zoom_atual += 0.1
+        ctk.set_widget_scaling(zoom_atual)
+        print(f"Zoom atual: {zoom_atual:.1f}")
+
+def diminuir_zoom():
+    global zoom_atual
+
+    if zoom_atual > 0.8:
+        zoom_atual -= 0.1
+        ctk.set_widget_scaling(zoom_atual)
+        print(f"Zoom atual: {zoom_atual:.1f}")
+         
 janela.title("PersonaCode") 
 janela.geometry("1920x1080")
 janela.resizable(True, True)
