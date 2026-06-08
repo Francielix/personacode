@@ -44,6 +44,58 @@ def tela_inicio():
     botao_comecar = ctk.CTkButton(janela, width=400, height=120, bg_color="transparent", text="COMEÇAR", font=("Poppins", 30,"bold"), fg_color="#3071FF", corner_radius=30, command=tela_nome )
     botao_comecar.place(relx=0.5, rely=0.85, anchor="center")
 
+def tela_nome():
+    limpar_tela()
+    azul_topo_logo()
+    enunciado = ctk.CTkLabel(janela, text="Como gostaria de ser chamado(a)?", font=("Arial", 50, "bold"), bg_color="transparent")
+    enunciado.place(relx=0.05, rely=0.2)
+    sub_enunciado = ctk.CTkLabel(janela, text="Conte-nos um pouco sobre você.", font=("Arial", 40), bg_color="transparent", text_color="#3D3D3D")
+    sub_enunciado.place(relx=0.05, rely=0.28)
+    nome = ctk.CTkLabel(janela, text="Nome:", font=("Arial", 50, "bold"), bg_color="transparent")
+    nome.place(relx=0.05, rely=0.40)
+    entry = ctk.CTkEntry(janela, width=800, height=80, placeholder_text="Digite seu Nome", font=("Arial", 25), bg_color="transparent")
+    entry.place(relx=0.05, rely=0.47)
+    botao_voltar = ctk.CTkButton(janela, width=820, height=120, text="Voltar", font=("Arial", 30, "bold"), fg_color="transparent", corner_radius=30, command=tela_inicio, border_width=2, border_color="#000000", text_color="#000000", hover_color="#EE7733")
+    botao_voltar.place(relx=0.05, rely=0.85)
+    botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
+    botao_continuar.place(relx=0.52, rely=0.85)
+
+def tela_instrucao():
+    limpar_tela()
+    azul_topo_logo()
+    enunciado_inst = ctk.CTkLabel(janela, text="Instruções", font=("Arial", 50, "bold"), bg_color="transparent")
+    enunciado_inst.place(relx=0.05, rely=0.2)
+    sub_enunciado_inst = ctk.CTkLabel(janela, text="Leia com atenção antes de continuar.", font=("Arial", 40), bg_color="transparent", text_color="#3D3D3D")
+    sub_enunciado_inst.place(relx=0.05, rely=0.28)
+
+    #Instrução 
+    card1 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
+    card1.place(relx=0.05, rely=0.40)
+    ctk.CTkLabel(card1, text="Não há respostas certas ou erradas", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=25)
+    ctk.CTkLabel(card1, text="O importante é a sua opinião sincera.", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
+
+    #Instrução 2
+    card2 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
+    card2.place(relx=0.52, rely=0.40)
+    ctk.CTkLabel(card2, text="Leva cerca de 10 minutos", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=15)
+    ctk.CTkLabel(card2, text="Não pense muito. Seja você mesmo(a).", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
+
+    #Instrução 3
+    card3 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
+    card3.place(relx = 0.05, rely = 0.58)
+    ctk.CTkLabel(card3, text="Responda de forma espontânea", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=15)
+    ctk.CTkLabel(card3, text="Não pense muito. Seja você mesmo(a).", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
+
+    #Instrução 4
+    card4 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
+    card4.place(relx=0.52, rely=0.58)
+    ctk.CTkLabel(card4, text="Evite pedir ajuda de outras pessoas", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=15)
+    ctk.CTkLabel(card4, text="O resultado deve refletir apenas você..", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
+    
+    botao_voltar = ctk.CTkButton(janela, width=820, height=120, text="Voltar", font=("Arial", 30, "bold"), fg_color="transparent", corner_radius=30, command=tela_nome, border_width=2, border_color="#000000", text_color="#000000", hover_color="#EE7733")
+    botao_voltar.place(relx=0.05, rely=0.85)
+    botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
+    botao_continuar.place(relx=0.52, rely=0.85)
 
 tela_inicio()
 janela.mainloop()# Abrir a janela
