@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo2.png" width="420"/>
+  <img src="assets/logo2.png" width="420"/>
 </p>
 
 # ---------- PersonaCode ----------
