@@ -2,6 +2,8 @@ import customtkinter as ctk
 from PIL import Image
 import os
 
+from docs import resultados
+
 #configurações da tela
 ctk.set_appearance_mode("system") 
 janela = ctk.CTk()
@@ -114,6 +116,104 @@ def tela_instrucao():
     botao_voltar.place(relx=0.05, rely=0.85)
     botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
     botao_continuar.place(relx=0.52, rely=0.85)
+
+#-------------------------------------
+#funçao da tela de resultados
+#-------------------------------------
+
+def tela_resultado(faixa, indice_resultado):
+    limpar_tela()
+    azul_topo_logo()
+    barra_zoom()
+
+    # Faixa de exibição para RESULTADOS usa chave diferente de PERGUNTAS
+    faixa_resultado = faixa
+    if faixa == "crianca":
+        faixa_resultado = "criança"
+    elif faixa == "jovem/adulto":
+        faixa_resultado = "jovem/adulto"
+
+    resultado = RESULTADOS[faixa_resultado][indice_resultado]
+
+    # resultado é uma tupla: (TÍTULO, descrição, complemento, "DICA", texto_dica)
+    # alguns perfis têm 5 elementos, outros 4 — tratamos os dois casos
+    if len(resultado) == 5:
+        titulo, descricao, complemento, _, dica = resultado
+    else:
+        titulo, descricao, _, dica = resultado
+        complemento = ""
+
+    nome = estado["nome"]
+
+    ctk.CTkLabel(
+        janela,
+        text=f"{nome}, seu perfil é:",
+        font=("Arial", 32),
+        bg_color="transparent",
+        text_color="#444444"
+    ).place(relx=0.05, rely=0.28)
+
+    ctk.CTkLabel(
+        janela,
+        text=titulo,
+        font=("Arial", 46, "bold"),
+        bg_color="transparent",
+        text_color="#3071FF"
+    ).place(relx=0.05, rely=0.34)
+
+    ctk.CTkLabel(
+        janela,
+        text=descricao,
+        font=("Arial", 24),
+        bg_color="transparent",
+        wraplength=1100,
+        justify="left"
+    ).place(relx=0.05, rely=0.44)
+
+    if complemento:
+        ctk.CTkLabel(
+            janela,
+            text=complemento,
+            font=("Arial", 22),
+            bg_color="transparent",
+            text_color="#555555",
+            wraplength=1100,
+            justify="left"
+        ).place(relx=0.05, rely=0.54)
+
+    # Card da dica
+    card_dica = ctk.CTkFrame(janela, width=1100, height=130, fg_color="#EEF4FF", border_width=2, border_color="#3071FF", corner_radius=12)
+    card_dica.place(relx=0.05, rely=0.64)
+    ctk.CTkLabel(card_dica, text="💡 DICA", font=("Arial", 22, "bold"), text_color="#3071FF", fg_color="transparent").place(x=20, y=12)
+    ctk.CTkLabel(card_dica, text=dica, font=("Arial", 20), text_color="#333333", fg_color="transparent", wraplength=1060, justify="left").place(x=20, y=48)
+
+    # Botões
+    ctk.CTkButton(
+        janela,
+        width=260,
+        height=80,
+        text="Fazer novamente",
+        font=("Arial", 24, "bold"),
+        fg_color="#3071FF",
+        corner_radius=30,
+        command=tela_inicio
+    ).place(relx=0.52, rely=0.87)
+
+    ctk.CTkButton(
+        janela,
+        width=180,
+        height=80,
+        text="Sair",
+        font=("Arial", 24, "bold"),
+        fg_color="transparent",
+        corner_radius=30,
+        border_width=2,
+        border_color="#000000",
+        text_color="#000000",
+        hover_color="#EE7733",
+        command=janela.destroy
+    ).place(relx=0.05, rely=0.87)
+
 
 tela_inicio()
 janela.mainloop()# Abrir a janela
