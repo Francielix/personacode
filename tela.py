@@ -2,6 +2,7 @@ import customtkinter as ctk
 from PIL import Image
 import os
 
+from docs import PERGUNTAS
 from docs import RESULTADOS
 
 #configurações da tela
