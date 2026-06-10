@@ -214,7 +214,7 @@ def tela_perguntas() -> None:
             else:
                 tela_instrucao()
 
-        ctk.CTkButton(
+        ctk.CTkButton(  
             janela,
             width=180, height=70,
             text="Voltar",
@@ -234,7 +234,7 @@ def tela_perguntas() -> None:
 #funçao da tela de resultados
 #-------------------------------------
 
-def tela_resultado(faixa, indice_resultado):
+def tela_resultado(faixa, indice_resultado):  #funçao da tela de resultados
     limpar_tela()
     azul_topo_logo()
     barra_zoom()
@@ -249,6 +249,7 @@ def tela_resultado(faixa, indice_resultado):
     resultado = RESULTADOS[faixa_resultado][indice_resultado]
 
     # resultado é uma tupla: (TÍTULO, descrição, complemento, "DICA", texto_dica)
+
     # alguns perfis têm 5 elementos, outros 4 — tratamos os dois casos
     if len(resultado) == 5:
         titulo, descricao, complemento, _, dica = resultado
@@ -256,9 +257,9 @@ def tela_resultado(faixa, indice_resultado):
         titulo, descricao, _, dica = resultado
         complemento = ""
 
-    nome = estado["nome"]
+    nome = estado["nome"]  #variavel do estado
 
-    ctk.CTkLabel(
+    ctk.CTkLabel( # nome do usuario do app
         janela,
         text=f"{nome}, seu perfil é:",
         font=("Arial", 32),
@@ -266,7 +267,7 @@ def tela_resultado(faixa, indice_resultado):
         text_color="#EB7C24"
     ).place(relx=0.05, rely=0.28)
 
-    ctk.CTkLabel(
+    ctk.CTkLabel( #titulo 
         janela,
         text=titulo,
         font=("Arial", 46, "bold"),
@@ -274,7 +275,7 @@ def tela_resultado(faixa, indice_resultado):
         text_color="#3071FF"
     ).place(relx=0.05, rely=0.34)
 
-    ctk.CTkLabel(
+    ctk.CTkLabel(  #descriçao
         janela,
         text=descricao,
         font=("Arial", 24),
@@ -284,7 +285,7 @@ def tela_resultado(faixa, indice_resultado):
     ).place(relx=0.05, rely=0.44)
 
     if complemento:
-        ctk.CTkLabel(
+        ctk.CTkLabel( #complemento
             janela,
             text=complemento,
             font=("Arial", 22),
@@ -300,7 +301,7 @@ def tela_resultado(faixa, indice_resultado):
     ctk.CTkLabel(card_dica, text="💡 DICA", font=("Arial", 22, "bold"), text_color="#3071FF", fg_color="transparent").place(x=20, y=12)
     ctk.CTkLabel(card_dica, text=dica, font=("Arial", 20), text_color="#333333", fg_color="transparent", wraplength=1060, justify="left").place(x=20, y=48)
 
-    # Botões
+    # Botao fazer novamento o app
     ctk.CTkButton(
         janela,
         width=260,
@@ -312,7 +313,7 @@ def tela_resultado(faixa, indice_resultado):
         command=tela_inicio
     ).place(relx=0.52, rely=0.87)
 
-    ctk.CTkButton(
+    ctk.CTkButton(  #botao voltar
         janela,
         width=180,
         height=80,
