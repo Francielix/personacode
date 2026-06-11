@@ -540,4 +540,5 @@ def tela_resultado(faixa, indice_resultado):  #funçao da tela de resultados
 
 
 tela_inicio()
+janela.after(50, lambda: janela.state("zoomed")) # algo fazia a janela diminuir na execução, então isso maximiza a janela 50ms depois de abrir
 janela.mainloop()# Abrir a janela
