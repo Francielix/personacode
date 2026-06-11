@@ -48,38 +48,101 @@ def azul_topo_logo():
     label_logo.image = logo  # ← evita a imagem sumir
     label_logo.place(relx=0.5, rely=0.6, anchor="center")
 
-def tela_inicio():
+def tela_inicio() -> None:
+    global tela_atual
+    tela_atual = tela_inicio
     limpar_tela()
-    azul_topo_logo()
-    mensagem_b_vindo = ctk.CTkLabel(janela, text="Bem Vindo ao Persona Code!", font=("Poppins",50, "bold" ), bg_color="transparent")
-    mensagem_b_vindo.place(relx=0.5, rely=0.25, anchor="center") 
-    mensagem_inicial = ctk.CTkLabel(janela, text=(
-    "Antes de começar, vamos te apresentar a base deste teste.\n"
-    "A Tríade do Tempo é uma metodologia que organiza nossas atividades em três categorias:\n"
-    "• Importante — ações que geram impacto no seu futuro\n"
-    "• Urgente — demandas que exigem atenção imediata\n"
-    "• Circunstancial — atividades que desviam seu foco do essencial.\n"
-    "Ao longo do teste, suas respostas irão revelar qual desses padrões predomina no seu comportamento."
-    ), font=("Segoe UI", 35, "bold"), fg_color="transparent", justify="left", wraplength=1150)
-    mensagem_inicial.place(relx=0.52, rely=0.53, anchor="center")
-    botao_comecar = ctk.CTkButton(janela, width=400, height=120, bg_color="transparent", text="COMEÇAR", font=("Poppins", 30,"bold"), fg_color="#3071FF", corner_radius=30, command=tela_nome )
-    botao_comecar.place(relx=0.5, rely=0.85, anchor="center")
+    pai = criar_area_scroll()
+    azul_topo_logo(pai)
+    barra_zoom(pai)
+    c = corpo(pai)
+ 
+    ctk.CTkLabel(
+        c,
+        text="Bem-vindo(a) ao PersonaCode!",
+        font=("Poppins", f(50), "bold"),
+    ).pack(anchor="center", pady=(20, 10))
+ 
+    ctk.CTkLabel(
+        c,
+        text=(
+            "Antes de começar, vamos te apresentar a base deste teste.\n"
+            "O PersonaCode tem como base a Tríade do Tempo de Christian Barbosa — "
+            "metodologia que revela como cada pessoa distribui seu tempo entre o urgente, "
+            "o importante e o circunstancial. Criada para o mundo corporativo, ela ganha "
+            "aqui uma nova dimensão: adaptada para diferentes fases da vida, torna-se um "
+            "espelho de quem você é — e um caminho para quem você quer ser."
+        ),
+        font=("Segoe UI", f(28), "bold"),
+        anchor="center",
+        justify="center",
+        fg_color="transparent", 
+        wraplength=1100
+    ).pack(anchor="center", pady=(10, 30))
 
-def tela_nome():
+ 
+    ctk.CTkButton(
+        c,
+        width=w(200), height=w(80),
+        text="COMEÇAR",
+        font=("Poppins", f(28), "bold"),
+        fg_color="#3071FF",
+        corner_radius=30,
+        command=tela_nome
+    ).pack(anchor="center", pady=20)
+
+def tela_nome() -> None:
+    global tela_atual
+    tela_atual = tela_nome
     limpar_tela()
-    azul_topo_logo()
-    enunciado = ctk.CTkLabel(janela, text="Como gostaria de ser chamado(a)?", font=("Arial", 50, "bold"), bg_color="transparent")
-    enunciado.place(relx=0.05, rely=0.2)
-    sub_enunciado = ctk.CTkLabel(janela, text="Conte-nos um pouco sobre você.", font=("Arial", 40), bg_color="transparent", text_color="#3D3D3D")
-    sub_enunciado.place(relx=0.05, rely=0.28)
-    nome = ctk.CTkLabel(janela, text="Nome:", font=("Arial", 50, "bold"), bg_color="transparent")
-    nome.place(relx=0.05, rely=0.40)
-    entry = ctk.CTkEntry(janela, width=800, height=80, placeholder_text="Digite seu Nome", font=("Arial", 25), bg_color="transparent")
-    entry.place(relx=0.05, rely=0.47)
-    botao_voltar = ctk.CTkButton(janela, width=820, height=120, text="Voltar", font=("Arial", 30, "bold"), fg_color="transparent", corner_radius=30, command=tela_inicio, border_width=2, border_color="#000000", text_color="#000000", hover_color="#EE7733")
-    botao_voltar.place(relx=0.05, rely=0.85)
-    botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
-    botao_continuar.place(relx=0.52, rely=0.85)
+    pai = criar_area_scroll()
+    azul_topo_logo(pai)
+    barra_zoom(pai)
+    c = corpo(pai)
+ 
+    def botao_continuar():
+        nome = entry.get().strip().capitalize()
+        idade = entry_idade.get()
+        
+        estado["nome"] = nome
+        estado["idade"] = int(idade)
+        tela_instrucao()
+ 
+    ctk.CTkLabel(c, text="Como gostaria de ser chamado(a)?",
+                 font=("Arial", f(36), "bold")).pack(anchor="center", pady=(20, 4))
+    ctk.CTkLabel(c, text="Conte-nos um pouco sobre você.",
+                 font=("Arial", f(26)), text_color="#3D3D3D").pack(anchor="center", pady=(0, 20))
+ 
+    ctk.CTkLabel(c, text="Nome:", font=("Arial", f(32), "bold")).pack(anchor="center")
+    entry = ctk.CTkEntry(c, width=w(700), height=w(70),
+                         placeholder_text="Digite seu Nome",
+                         font=("Arial", f(22)))
+    entry.pack(anchor="center", pady=(4, 20))
+ 
+    ctk.CTkLabel(c, text="Idade:", font=("Arial", f(32), "bold")).pack(anchor="center")
+    entry_idade = ctk.CTkEntry(c, width=w(700), height=w(70),
+                               placeholder_text="Digite sua idade",
+                               font=("Arial", f(22)))
+    entry_idade.pack(anchor="center", pady=(4, 30))
+ 
+    frame_botoes = ctk.CTkFrame(c, fg_color="transparent")
+    frame_botoes.pack(anchor="center", pady=10)
+ 
+    ctk.CTkButton(
+        frame_botoes, width=w(200), height=w(80),
+        text="Voltar", font=("Arial", f(26), "bold"),
+        fg_color="transparent", corner_radius=30,
+        border_width=2, border_color="#000000",
+        text_color="#000000", hover_color="#EE7733",
+        command=tela_inicio
+    ).pack(side="left", padx=(0, 40))
+ 
+    ctk.CTkButton(
+        frame_botoes, width=w(200), height=w(80),
+        text="Continuar", font=("Arial", f(26), "bold"),
+        fg_color="#3071FF", corner_radius=30,
+        command=botao_continuar
+    ).pack(side="left", padx=(0, 60))
 
 def tela_instrucao() -> None:
     global tela_atual
