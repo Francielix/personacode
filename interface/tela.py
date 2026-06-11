@@ -335,7 +335,7 @@ def get_faixa_etaria():
 # determina o indici de 0 - 4 para apresentar o resultado final, com base na média das respostas
 def calcular_resultado(respostas): # recebe a lista de respostas (pontuações)
     media = sum(respostas) / len(respostas) # calcula a média das respostas
-#define os intervalos de media para cada resultado
+    #define os intervalos de media para cada resultado
     if media >= 4.5:
         return 0
     elif media >= 3.5:
@@ -444,6 +444,7 @@ def tela_resultado(faixa, indice_resultado):  #funçao da tela de resultados
     global tela_atual
     tela_atual = lambda: tela_resultado(faixa, indice_resultado)
     limpar_tela()
+    pai = criar_area_scroll()
     azul_topo_logo(pai)
     barra_zoom(pai)
     c = corpo(pai)
