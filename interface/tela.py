@@ -156,10 +156,10 @@ def tela_perguntas() -> None:
         global tela_atual
         tela_atual = lambda: exibir_pergunta(indice)
         limpar_tela()
-        area = criar_area_scroll() # Cria uma área de rolagem cpro conteúdo
-        azul_topo_logo(area)
-        barra_zoom(area)
-        c = corpo(area)
+        pai = criar_area_scroll() # Cria uma área de rolagem cpro conteúdo
+        azul_topo_logo(pai)
+        barra_zoom(pai)
+        c = corpo(pai)
  
         pergunta = perguntas[indice]
  
