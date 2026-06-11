@@ -6,8 +6,10 @@ from docs.perguntas import PERGUNTAS
 from docs.resultados import RESULTADOS
 
 #configurações da tela
-ctk.set_appearance_mode("system") 
+ctk.set_appearance_mode("system")
 janela = ctk.CTk()
+janela.title("PersonaCode")
+janela.resizable(True, True)
 
 #Zoom na tela
 zoom = 1.0
@@ -25,30 +27,26 @@ ctk.CTkButton(frame_zoom, text="+", width=28, command=lambda: _zoom(+.1)).pack(s
 
 janela.bind("<minus>", lambda e: _zoom(-.1))
 janela.bind("<equal>", lambda e: _zoom(+.1))
-         
-janela.title("PersonaCode") 
-janela.geometry("1920x1080")
-janela.resizable(True, True)
 
 #def para limpar a tela
 def limpar_tela():
     for widget in janela.winfo_children():
         widget.destroy()
 
-def azul_topo():
-    frame_1 = ctk.CTkFrame(janela, width=1920, height= 180, fg_color="#00193A", bg_color="#00193A")#faixa azul na tela
-    frame_1.place(x=0, y=0)#local da faixa azul
-    return frame_1
-caminho_da_imagem = os.path.join(os.path.dirname(__file__), "interface", "logo2.png")
-
-def azul_topo_logo():
-    frame_1 = azul_topo()  #recebe o frame
-    logo = ctk.CTkImage(Image.open(caminho_da_imagem), size=(500, 225))
-    label_logo = ctk.CTkLabel(frame_1, image=logo, text="", fg_color="transparent")  # faz ficar dentro do frame_1
-    label_logo.image = logo  #  evita a imagem sumir
-    label_logo.place(relx=0.5, rely=0.6, anchor="center")
-
-def tela_inicio() -> None:
+def azul_topo_logo(pai):
+    # Cria o cabeçalho azul com logo dentro do frame pai
+    frame_topo = ctk.CTkFrame(pai, height=w(180), fg_color="#00193A",
+                               corner_radius=0)
+    frame_topo.pack(fill="x", side="top")
+    frame_topo.pack_propagate(False)
+ 
+    logo = ctk.CTkImage(Image.open(caminho_da_imagem), size=logo_size())
+    label_logo = ctk.CTkLabel(frame_topo, image=logo, text="",
+                               fg_color="transparent")
+    label_logo.image = logo
+    label_logo.place(relx=0.5, rely=0.5, anchor="center")
+    
+def tela_inicio():
     global tela_atual
     tela_atual = tela_inicio
     limpar_tela()
@@ -91,7 +89,7 @@ def tela_inicio() -> None:
         command=tela_nome
     ).pack(anchor="center", pady=20)
 
-def tela_nome() -> None:
+def tela_nome():
     global tela_atual
     tela_atual = tela_nome
     limpar_tela()
@@ -144,7 +142,7 @@ def tela_nome() -> None:
         command=botao_continuar
     ).pack(side="left", padx=(0, 60))
 
-def tela_instrucao() -> None:
+def tela_instrucao():
     global tela_atual
     tela_atual = tela_instrucao
     limpar_tela()
@@ -199,7 +197,7 @@ def tela_instrucao() -> None:
         command=tela_perguntas
     ).pack(side="left")
     
-def get_faixa_etaria() -> str:
+def get_faixa_etaria():
     idade = estado["idade"]
     if 5 <= idade <= 12:
         return "crianca"
@@ -227,13 +225,13 @@ def calcular_resultado(respostas): # recebe a lista de respostas (pontuações)
 
 # tela das PERGUNTAS 
 
-def tela_perguntas() -> None:
+def tela_perguntas():
     faixa = get_faixa_etaria()        # Vê a idade da pessoa
     perguntas = PERGUNTAS[faixa]      # seleciona as questões com base na idade
     total = len(perguntas)            #total de perguntas
     respostas = []                    # armazena as respostas.
  
-    def exibir_pergunta(indice: int) -> None: # vai mostrar questões específicas com base no índice
+    def exibir_pergunta(indice: int): # vai mostrar questões específicas com base no índice
         global tela_atual
         tela_atual = lambda: exibir_pergunta(indice)
         limpar_tela()
