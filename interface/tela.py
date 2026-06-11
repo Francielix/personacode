@@ -16,6 +16,7 @@ janela = ctk.CTk()
 janela.title("PersonaCode")
 janela.resizable(True, True)
 
+caminho_da_imagem = os.path.join(os.path.dirname(__file__), "logo2.png")
 estado = {
     "nome": "",
     "idade": 0
@@ -112,6 +113,12 @@ def azul_topo_logo(pai):
                                fg_color="transparent")
     label_logo.image = logo
     label_logo.place(relx=0.5, rely=0.5, anchor="center")
+
+def corpo(pai) -> ctk.CTkFrame:
+    """Retorna um frame de conteúdo com padding lateral padrão."""
+    frame = ctk.CTkFrame(pai, fg_color="transparent")
+    frame.pack(fill="both", expand=True, padx=60, pady=30)
+    return frame
     
 def tela_inicio():
     global tela_atual
