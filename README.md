@@ -36,11 +36,14 @@ O classificador de perfil do PersonaCode é inteiramente baseado na **Tríade do
 
 ```
 PersonaCode/
+├── docs/
+    └── perguntas.py       # Banco de perguntas por faixa etária
+    └── resultados.py      # Perfis e descrições do resultado
+    └── __init__.py        # Reconhecimento de pasta como Pacote Python
 ├── interface/
 │   └── logo2.png          # Logo da aplicação
-├── tela.py                # Interface gráfica principal
-├── perguntas.py           # Banco de perguntas por faixa etária
-├── resultados.py          # Perfis e descrições de resultado
+    └── tela.py            # Interface gráfica principal
+├── main.py                # Arquivo de execução do programa
 ├── requirements.txt       # Dependências do projeto
 ├── .gitignore             # Arquivos ignorados pelo Git
 └── README.md              # Documentação do projeto
@@ -63,7 +66,7 @@ cd PersonaCode
 pip install -r requirements.txt
 
 # 4. Execute a aplicação
-python tela.py
+python main.py
 ```
 
 -------------------------------------------------------------------------------------------------------------------------------------------
@@ -103,7 +106,7 @@ Juliano Lacerda
 
 Itallo Gustavo 
 
-Klever Baliza
+Klever S. Baliza
 
 Yuri 
 
@@ -125,4 +128,4 @@ Tallita
 
 # ---------- Contexto acadêmico ----------
 
-Projeto desenvolvido para as UCs de **Interação Humano-Computador (IHC)** e **Algoritmos e Programação**, com aplicação prática de conceitos de UX, acessibilidade e lógica de programação em Python.
+Projeto desenvolvido para as UCs de **Interação Humano-Computador e UX (IHC-UX)** e **Algoritmos e Programação**, com aplicação prática de conceitos de UX, acessibilidade e lógica de programação em Python.
