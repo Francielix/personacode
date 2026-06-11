@@ -117,7 +117,18 @@ def tela_instrucao():
     botao_voltar.place(relx=0.05, rely=0.85)
     botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
     botao_continuar.place(relx=0.52, rely=0.85)
-
+    
+def get_faixa_etaria() -> str:
+    idade = estado["idade"]
+    if 5 <= idade <= 12:
+        return "crianca"
+    elif 13 <= idade <= 17:
+        return "adolescente"
+    elif 18 <= idade <= 59:
+        return "jovem/adulto"
+    else:
+        return "idoso"
+        
 # determina o indici de 0 - 4 para apresentar o resultado final, com base na média das respostas
 def calcular_resultado(respostas): # recebe a lista de respostas (pontuações)
     media = sum(respostas) / len(respostas) # calcula a média das respostas
