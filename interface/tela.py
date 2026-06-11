@@ -149,9 +149,9 @@ def tela_instrucao() -> None:
     tela_atual = tela_instrucao
     limpar_tela()
     pai = criar_area_scroll()
-    azul_topo_logo()
+    azul_topo_logo(pai)
     barra_zoom(pai)
-    c = corpo(area)
+    c = corpo(pai)
  
     ctk.CTkLabel(c, text="Instruções",
                  font=("Arial", f(50), "bold")).pack(anchor="w", pady=(20, 4))
