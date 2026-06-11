@@ -81,42 +81,60 @@ def tela_nome():
     botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
     botao_continuar.place(relx=0.52, rely=0.85)
 
-def tela_instrucao():
+def tela_instrucao() -> None:
+    global tela_atual
+    tela_atual = tela_instrucao
     limpar_tela()
+    pai = criar_area_scroll()
     azul_topo_logo()
-    enunciado_inst = ctk.CTkLabel(janela, text="Instruções", font=("Arial", 50, "bold"), bg_color="transparent")
-    enunciado_inst.place(relx=0.05, rely=0.2)
-    sub_enunciado_inst = ctk.CTkLabel(janela, text="Leia com atenção antes de continuar.", font=("Arial", 40), bg_color="transparent", text_color="#3D3D3D")
-    sub_enunciado_inst.place(relx=0.05, rely=0.28)
-
-    #Instrução 
-    card1 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
-    card1.place(relx=0.05, rely=0.40)
-    ctk.CTkLabel(card1, text="Não há respostas certas ou erradas", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=25)
-    ctk.CTkLabel(card1, text="O importante é a sua opinião sincera.", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
-
-    #Instrução 2
-    card2 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
-    card2.place(relx=0.52, rely=0.40)
-    ctk.CTkLabel(card2, text="Leva cerca de 10 minutos", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=15)
-    ctk.CTkLabel(card2, text="Não pense muito. Seja você mesmo(a).", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
-
-    #Instrução 3
-    card3 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
-    card3.place(relx = 0.05, rely = 0.58)
-    ctk.CTkLabel(card3, text="Responda de forma espontânea", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=15)
-    ctk.CTkLabel(card3, text="Não pense muito. Seja você mesmo(a).", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
-
-    #Instrução 4
-    card4 = ctk.CTkFrame(janela, width=820, height=150, fg_color="white", border_width=3, border_color="#000000", corner_radius=10)
-    card4.place(relx=0.52, rely=0.58)
-    ctk.CTkLabel(card4, text="Evite pedir ajuda de outras pessoas", font=("Arial", 25, "bold"), text_color="#000000", fg_color="transparent").place(x=20, y=15)
-    ctk.CTkLabel(card4, text="O resultado deve refletir apenas você..", font=("Arial", 22), text_color="#555555", fg_color="transparent").place(x=20, y=55)
-    
-    botao_voltar = ctk.CTkButton(janela, width=820, height=120, text="Voltar", font=("Arial", 30, "bold"), fg_color="transparent", corner_radius=30, command=tela_nome, border_width=2, border_color="#000000", text_color="#000000", hover_color="#EE7733")
-    botao_voltar.place(relx=0.05, rely=0.85)
-    botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
-    botao_continuar.place(relx=0.52, rely=0.85)
+    barra_zoom(pai)
+    c = corpo(area)
+ 
+    ctk.CTkLabel(c, text="Instruções",
+                 font=("Arial", f(50), "bold")).pack(anchor="w", pady=(20, 4))
+    ctk.CTkLabel(c, text="Leia com atenção antes de continuar.",
+                 font=("Arial", f(32)), text_color="#3D3D3D").pack(anchor="w", pady=(0, 20))
+ 
+    cards_dados = [
+        ("Não há respostas certas ou erradas", "O importante é a sua opinião sincera."),
+        ("Leva cerca de 10 minutos",           "Não pense muito. Seja você mesmo(a)."),
+        ("Responda de forma espontânea",       "Aqui, intuição vale mais que perfeição."),
+        ("Evite pedir ajuda de outras pessoas","O resultado deve refletir apenas você."),
+    ]
+ 
+    # Grade 2×2 de cards
+    for linha in range(0, 4, 2):
+        row_frame = ctk.CTkFrame(c, fg_color="transparent")
+        row_frame.pack(fill="x", pady=8)
+        for titulo_card, sub_card in cards_dados[linha:linha+2]:
+            card = ctk.CTkFrame(row_frame, width=w(560), height=w(120),
+                                fg_color="white", border_width=3,
+                                border_color="#000000", corner_radius=10)
+            card.pack(side="left", padx=(0, 20))
+            card.pack_propagate(False)
+            ctk.CTkLabel(card, text=titulo_card, font=("Arial", f(22), "bold"),
+                         text_color="#000000", fg_color="transparent").place(x=20, y=18)
+            ctk.CTkLabel(card, text=sub_card, font=("Arial", f(19)),
+                         text_color="#555555", fg_color="transparent").place(x=20, y=52)
+ 
+    frame_botoes = ctk.CTkFrame(c, fg_color="transparent")
+    frame_botoes.pack(anchor="w", pady=30)
+ 
+    ctk.CTkButton(
+        frame_botoes, width=w(200), height=w(80),
+        text="Voltar", font=("Arial", f(26), "bold"),
+        fg_color="transparent", corner_radius=30,
+        border_width=2, border_color="#000000",
+        text_color="#000000", hover_color="#EE7733",
+        command=tela_nome
+    ).pack(side="left", padx=(0, 20))
+ 
+    ctk.CTkButton(
+        frame_botoes, width=w(200), height=w(80),
+        text="Continuar", font=("Arial", f(26), "bold"),
+        fg_color="#3071FF", corner_radius=30,
+        command=tela_perguntas
+    ).pack(side="left")
     
 def get_faixa_etaria() -> str:
     idade = estado["idade"]
