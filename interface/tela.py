@@ -22,6 +22,37 @@ estado = {
     "idade": 0
 }
 
+tema_atual = "dark"
+
+def mudar_tema():
+    global tema_atual
+    if tema_atual == "dark":
+        ctk.set_appearance_mode("light")
+        tema_atual = "light"
+    else:
+        ctk.set_appearance_mode("dark")
+        tema_atual = "dark"
+    if tela_atual:
+        tela_atual()
+
+def criar_botao_tema(pai):
+    
+    icone = "☀️" if tema_atual == "dark" else "🌙"
+    botao_tema = ctk.CTkButton(
+        janela,
+        text=icone,
+        width=30,
+        height=40,
+        corner_radius=20,
+        fg_color="#0C1F48",
+        hover_color="#5982DB",
+        font=("Arial", 18),
+        command=mudar_tema
+    )
+    # Usa place na janela principal — fica sempre visível sobre tudo
+    botao_tema.place(relx=0.9, rely=0.9, anchor="center")
+    botao_tema.lift()
+
 # Zoom na tela
 
 zoom = 1.0
@@ -170,6 +201,7 @@ def tela_inicio():
     azul_topo_logo(pai)
     barra_zoom(pai)
     c = corpo(pai)
+    criar_botao_tema(pai)
  
     ctk.CTkLabel(
         c,
@@ -213,6 +245,7 @@ def tela_nome():
     azul_topo_logo(pai)
     barra_zoom(pai)
     c = corpo(pai)
+    criar_botao_tema(pai)
  
     def botao_continuar():
         nome = entry.get().strip().capitalize()
@@ -274,6 +307,7 @@ def tela_instrucao():
     azul_topo_logo(pai)
     barra_zoom(pai)
     c = corpo(pai)
+    criar_botao_tema(pai)
  
     ctk.CTkLabel(c, text="Instruções",
                  font=("Arial", f(50), "bold")).pack(anchor="w", pady=(20, 4))
@@ -354,7 +388,8 @@ def tela_perguntas():
     perguntas = PERGUNTAS[faixa]      # seleciona as questões com base na idade
     total = len(perguntas)            #total de perguntas
     respostas = []                    # armazena as respostas.
- 
+    
+    
     def exibir_pergunta(indice: int): # vai mostrar questões específicas com base no índice
         global tela_atual
         tela_atual = lambda: exibir_pergunta(indice)
@@ -363,6 +398,7 @@ def tela_perguntas():
         azul_topo_logo(pai)
         barra_zoom(pai)
         c = corpo(pai)
+        criar_botao_tema(pai)
  
         pergunta = perguntas[indice]
  
@@ -448,6 +484,7 @@ def tela_resultado(faixa, indice_resultado):  #funçao da tela de resultados
     azul_topo_logo(pai)
     barra_zoom(pai)
     c = corpo(pai)
+    criar_botao_tema(pai)
 
     # Faixa de exibição para RESULTADOS usa chave diferente de PERGUNTAS
     faixa_resultado = faixa
