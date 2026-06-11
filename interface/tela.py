@@ -52,16 +52,16 @@ def diminuir_zoom():
     if zoom > 0.6:
         _atualizar_zoom(zoom - 0.1)
 
-# ----------- ADICIONAR SCROLL ----------
+# ADICIONAR SCROLL
 canvas_scroll = None
 frame_conteudo = None
 
-# ----- Remove todos os widgets da janela, incluindo o canvas de scroll -------
+# Remove todos os widgets da janela, incluindo o canvas de scroll
 def limpar_tela() -> None:
     for widget in janela.winfo_children():
         widget.destroy()
 
- # ---- Cria um canvas com scrollbar vertical ocupando a janela inteira e retorna o frame interno onde os widgets devem ser colocados ----
+ # Cria um canvas com scrollbar vertical ocupando a janela inteira e retorna o frame interno onde os widgets devem ser colocados
 def criar_area_scroll() -> ctk.CTkFrame:
     global canvas_scroll, frame_conteudo
  
@@ -94,7 +94,49 @@ def criar_area_scroll() -> ctk.CTkFrame:
     
     return frame_conteudo
 
-
+def barra_zoom(pai) -> None:                                                                #Botões +/− com visual arredondado, fixos no topo direito do frame de conteúdo.
+    frame_zoom = ctk.CTkFrame(
+        pai,
+        fg_color="#1C1C2E",
+        corner_radius=0,
+        border_width=0,
+    )
+    # Posicionado com place relativo ao frame_conteudo
+    frame_zoom.place(relx=1.0, rely=0.0, anchor="ne", x=-12, y=8)
+    frame_zoom.lift()
+ 
+    ctk.CTkButton(
+        frame_zoom,
+        text="−",
+        width=44, height=36,
+        font=("Arial", 18, "bold"),
+        fg_color="transparent",
+        hover_color="#3071FF",
+        text_color="white",
+        corner_radius=20,
+        command=diminuir_zoom
+    ).pack(side="left", padx=(6, 2), pady=4)
+ 
+    ctk.CTkLabel(
+        frame_zoom,
+        text=f"{int(zoom * 100)}%",
+        font=("Arial", 13),
+        text_color="#AAAAAA",
+        fg_color="transparent",
+        width=40
+    ).pack(side="left", pady=4)
+ 
+    ctk.CTkButton(
+        frame_zoom,
+        text="+",
+        width=44, height=36,
+        font=("Arial", 18, "bold"),
+        fg_color="transparent",
+        hover_color="#3071FF",
+        text_color="white",
+        corner_radius=20,
+        command=aumentar_zoom
+    ).pack(side="left", padx=(2, 6), pady=4)
 
 #def para limpar a tela
 def limpar_tela():
