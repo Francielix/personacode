@@ -8,23 +8,23 @@ from docs import RESULTADOS
 #configurações da tela
 ctk.set_appearance_mode("system") 
 janela = ctk.CTk()
-zoom_atual = 1.0
 
-def aumentar_zoom():
-    global zoom_atual
+#Zoom na tela
+zoom = 1.0
 
-    if zoom_atual < 1.5:
-        zoom_atual += 0.1
-        ctk.set_widget_scaling(zoom_atual)
-        print(f"Zoom atual: {zoom_atual:.1f}")
+def _zoom(d):
+    global zoom
+    zoom = max(0.8, min(1.5, zoom + d))
+    ctk.set_widget_scaling(zoom)
 
-def diminuir_zoom():
-    global zoom_atual
+frame_zoom = ctk.CTkFrame(toolbar, fg_color="transparent")
+frame_zoom.pack(side="right", padx=4)
 
-    if zoom_atual > 0.8:
-        zoom_atual -= 0.1
-        ctk.set_widget_scaling(zoom_atual)
-        print(f"Zoom atual: {zoom_atual:.1f}")
+ctk.CTkButton(frame_zoom, text="−", width=28, command=lambda: _zoom(-.1)).pack(side="left")
+ctk.CTkButton(frame_zoom, text="+", width=28, command=lambda: _zoom(+.1)).pack(side="left", padx=(2,0))
+
+janela.bind("<minus>", lambda e: _zoom(-.1))
+janela.bind("<equal>", lambda e: _zoom(+.1))
          
 janela.title("PersonaCode") 
 janela.geometry("1920x1080")
