@@ -118,83 +118,63 @@ def tela_instrucao():
     botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
     botao_continuar.place(relx=0.52, rely=0.85)
 
-# TELA DE PERGUNTAS
+# tela das PERGUNTAS 
 
 def tela_perguntas() -> None:
-    """
-    Controla o fluxo completo do questionário.
-    Exibe uma pergunta por vez com navegação bidirecional (avançar/voltar).
-    Ao final, calcula as pontuações da Tríade e redireciona para o resultado.
-    """
-    faixa = get_faixa_etaria()
-    perguntas = PERGUNTAS[faixa]
-    total = len(perguntas)
-
-    # Lista de respostas: cada item é {'pontuacao': int, 'categoria': str}
-    respostas: list[dict] = []
-
-    def exibir_pergunta(indice: int) -> None:
-        """
-        Renderiza a pergunta no índice informado, com barra de progresso e opções.
-
-        Args:
-            indice: Posição da pergunta na lista (0-based).
-        """
+    faixa = get_faixa_etaria()        # Vê a idade da pessoa
+    perguntas = PERGUNTAS[faixa]      # seleciona as questões com base na idade
+    total = len(perguntas)            #total de perguntas
+    respostas = []                    # armazena as respostas.
+ 
+    def exibir_pergunta(indice: int) -> None: # vai mostrar questões específicas com base no índice
+        global tela_atual
+        tela_atual = lambda: exibir_pergunta(indice)
         limpar_tela()
-        azul_topo_logo()
-        barra_zoom()
-
+        area = criar_area_scroll() # Cria uma área de rolagem cpro conteúdo
+        azul_topo_logo(area)
+        barra_zoom(area)
+        c = corpo(area)
+ 
         pergunta = perguntas[indice]
-
+ 
         # Contador e barra de progresso
-        ctk.CTkLabel(
-            janela,
+        ctk.CTkLabel(                                                        #contador
+            c,
             text=f"Pergunta {indice + 1} de {total}",
-            font=("Arial", 24),
-            text_color="#888888",
-            bg_color="transparent"
-        ).place(relx=0.05, rely=0.28)
-
-        barra = ctk.CTkProgressBar(janela, width=900, height=12,
+            font=("Arial", f(22)),
+            text_color="#888888"
+        ).pack(anchor="w", pady=(10, 4))
+ 
+        barra = ctk.CTkProgressBar(c, width=w(900), height=12,                # barrinha de progresso
                                    corner_radius=6, fg_color="#DDDDDD",
                                    progress_color="#3071FF")
         barra.set((indice + 1) / total)
-        barra.place(relx=0.05, rely=0.32)
-
-        # Texto da pergunta
+        barra.pack(anchor="w", pady=(0, 16))
+ 
         ctk.CTkLabel(
-            janela,
-            text=pergunta["texto"],
-            font=("Arial", 30, "bold"),
-            bg_color="transparent",
+            c,
+            text=pergunta["texto"],            #Basicamente ajuste de posição, fonte, tamanho da letra, etc
+            font=("Arial", f(28), "bold"),
             wraplength=1100,
             justify="left"
-        ).place(relx=0.05, rely=0.36)
-
+        ).pack(anchor="w", pady=(0, 20))
+ 
         # Opções de resposta
-        opcoes = pergunta["opcoes"]
-        categoria = pergunta.get("categoria", "importante")  # fallback seguro
-        posicoes_y = [0.50, 0.58, 0.66, 0.74, 0.82]
-
-        for i, opcao in enumerate(opcoes):
-            pontuacao = 5 - i  # opção 0 = 5pts … opção 4 = 1pt
-
-            def ao_clicar(pts: int = pontuacao, idx: int = indice,
-                          cat: str = categoria) -> None:
-                """Registra a resposta e avança para a próxima pergunta ou resultado."""
-                respostas.append({"pontuacao": pts, "categoria": cat})
+        for i, opcao in enumerate(pergunta["opcoes"]):     #percorre todas as opções da pergunta atual
+            pontuacao = 5 - i
+ 
+            def ao_clicar(pts=pontuacao, idx=indice):     # faz o registro da resposta e avança
+                respostas.append(pts)
                 if idx + 1 < total:
                     exibir_pergunta(idx + 1)
                 else:
-                    pontuacoes = calcular_pontuacoes_triada(respostas)
-                    indice_resultado = calcular_indice_resultado(pontuacoes)
-                    tela_resultado(faixa, indice_resultado, pontuacoes)
-
-            ctk.CTkButton(
-                janela,
-                width=1100, height=55,
+                    tela_resultado(faixa, calcular_resultado(respostas))
+ 
+            ctk.CTkButton(                                # botão pra cada opção de repsosta
+                c,
+                width=w(1000), height=w(52),              
                 text=opcao,
-                font=("Arial", 22),
+                font=("Arial", f(20)),
                 fg_color="white",
                 text_color="#000000",
                 hover_color="#D6E4FF",
@@ -203,33 +183,30 @@ def tela_perguntas() -> None:
                 corner_radius=10,
                 anchor="w",
                 command=ao_clicar
-            ).place(relx=0.05, rely=posicoes_y[i])
-
-        # Botão voltar
-        def voltar() -> None:
-            """Volta para a pergunta anterior desfazendo a última resposta."""
+            ).pack(anchor="w", pady=4)
+ 
+        def voltar():                            # volta a pergunta anterior, se for a primeira pergunta volta pra tela de instrução
             if indice > 0:
                 respostas.pop()
                 exibir_pergunta(indice - 1)
             else:
                 tela_instrucao()
-
-        ctk.CTkButton(  
-            janela,
-            width=180, height=70,
+ 
+        ctk.CTkButton(                            # botão pra voltar
+            c,
+            width=w(160), height=w(60),
             text="Voltar",
-            font=("Arial", 24, "bold"),
+            font=("Arial", f(22), "bold"),
             fg_color="transparent",
             corner_radius=30,
             border_width=2,
             border_color="#000000",
             text_color="#000000",
             hover_color="#EE7733",
-            command=voltar
-        ).place(relx=0.05, rely=0.92)
-
+            command=voltar                        
+        ).pack(anchor="w", pady=20)
+ 
     exibir_pergunta(0)
-
 #-------------------------------------
 #funçao da tela de resultados
 #-------------------------------------
