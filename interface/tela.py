@@ -1,6 +1,11 @@
 import customtkinter as ctk
 from PIL import Image
+import tkinter as tk 
+from tkinter import messagebox
 import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from docs.perguntas import PERGUNTAS
 from docs.resultados import RESULTADOS
@@ -45,6 +50,49 @@ def aumentar_zoom():
 def diminuir_zoom():
     if zoom > 0.6:
         _atualizar_zoom(zoom - 0.1)
+
+# ----------- ADICIONAR SCROLL ----------
+canvas_scroll = None
+frame_conteudo = None
+
+# ----- Remove todos os widgets da janela, incluindo o canvas de scroll -------
+def limpar_tela() -> None:
+    for widget in janela.winfo_children():
+        widget.destroy()
+
+ # ---- Cria um canvas com scrollbar vertical ocupando a janela inteira e retorna o frame interno onde os widgets devem ser colocados ----
+def criar_area_scroll() -> ctk.CTkFrame:
+    global canvas_scroll, frame_conteudo
+ 
+    canvas_scroll = tk.Canvas(janela, highlightthickness=0, bg=janela.cget("bg"))
+    scrollbar = ctk.CTkScrollbar(janela, orientation="vertical",
+                                  command=canvas_scroll.yview)
+ 
+    canvas_scroll.configure(yscrollcommand=scrollbar.set)
+ 
+    scrollbar.pack(side="right", fill="y")
+    canvas_scroll.pack(side="left", fill="both", expand=True)
+ 
+    frame_conteudo = ctk.CTkFrame(canvas_scroll, fg_color="transparent")
+    janela_canvas_id = canvas_scroll.create_window(
+        (0, 0), window=frame_conteudo, anchor="nw"
+    )
+ 
+    def _on_frame_resize(event):
+        canvas_scroll.configure(scrollregion=canvas_scroll.bbox("all"))
+ 
+    def _on_canvas_resize(event):
+        canvas_scroll.itemconfig(janela_canvas_id, width=event.width)
+ 
+    def _on_mousewheel(event):
+        canvas_scroll.yview_scroll(int(-1 * (event.delta / 120)), "units")
+ 
+    frame_conteudo.bind("<Configure>", _on_frame_resize)
+    canvas_scroll.bind("<Configure>", _on_canvas_resize)
+    canvas_scroll.bind_all("<MouseWheel>", _on_mousewheel)
+    
+    return frame_conteudo
+
 
 
 #def para limpar a tela
@@ -120,7 +168,15 @@ def tela_nome():
     def botao_continuar():
         nome = entry.get().strip().capitalize()
         idade = entry_idade.get()
-        
+        nome = entry.get().strip().capitalize()
+        idade = entry_idade.get()
+        if not nome:
+            messagebox.showwarning("ATENÇÃO!", "Por favor, informe como deseja ser chamado(a).")
+            return
+        if not idade.isdigit() or not (5 <= int(idade) <= 200):
+            messagebox.showwarning("ATENÇÃO!", "Por favor, informe uma idade válida.")
+            return
+            
         estado["nome"] = nome
         estado["idade"] = int(idade)
         tela_instrucao()
