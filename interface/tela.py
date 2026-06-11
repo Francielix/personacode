@@ -118,6 +118,21 @@ def tela_instrucao():
     botao_continuar = ctk.CTkButton(janela, width=820, height=120, text="Continuar", font=("Arial", 30, "bold"), fg_color="#3071FF", corner_radius=30, border_width=2, border_color="#3071FF", command=tela_instrucao)
     botao_continuar.place(relx=0.52, rely=0.85)
 
+# determina o indici de 0 - 4 para apresentar o resultado final, com base na média das respostas
+def calcular_resultado(respostas): # recebe a lista de respostas (pontuações)
+    media = sum(respostas) / len(respostas) # calcula a média das respostas
+#define os intervalos de media para cada resultado
+    if media >= 4.5:
+        return 0
+    elif media >= 3.5:
+        return 1
+    elif media >= 2.5:
+        return 2
+    elif media >= 1.5:
+        return 3
+    else:
+        return 4
+
 # tela das PERGUNTAS 
 
 def tela_perguntas() -> None:
