@@ -17,21 +17,35 @@ estado = {
 }
 
 #Zoom na tela
+
 zoom = 1.0
-
-def _zoom(d):
+tela_atual = None
+ 
+def f(tamanho: int) -> int:
+    #Retorna o tamanho de fonte escalado pelo zoom atual
+    return max(8, round(tamanho * zoom))
+ 
+def w(tamanho: int) -> int:
+    #Retorna largura/altura de widget escalada pelo zoom atual
+    return max(10, round(tamanho * zoom))
+ 
+def logo_size() -> tuple:
+    return (round(450 * zoom), round(225 * zoom))
+ 
+def _atualizar_zoom(novo_zoom: float) -> None:
     global zoom
-    zoom = max(0.8, min(1.5, zoom + d))
-    ctk.set_widget_scaling(zoom)
+    zoom = round(novo_zoom, 1)
+    if tela_atual:
+        tela_atual()
+ 
+def aumentar_zoom() -> None:
+    if zoom < 2.0:
+        _atualizar_zoom(zoom + 0.1)
+ 
+def diminuir_zoom() -> None:
+    if zoom > 0.6:
+        _atualizar_zoom(zoom - 0.1)
 
-frame_zoom = ctk.CTkFrame(toolbar, fg_color="transparent")
-frame_zoom.pack(side="right", padx=4)
-
-ctk.CTkButton(frame_zoom, text="−", width=28, command=lambda: _zoom(-.1)).pack(side="left")
-ctk.CTkButton(frame_zoom, text="+", width=28, command=lambda: _zoom(+.1)).pack(side="left", padx=(2,0))
-
-janela.bind("<minus>", lambda e: _zoom(-.1))
-janela.bind("<equal>", lambda e: _zoom(+.1))
 
 #def para limpar a tela
 def limpar_tela():
