@@ -441,9 +441,12 @@ def tela_perguntas():
 #-------------------------------------
 
 def tela_resultado(faixa, indice_resultado):  #funçao da tela de resultados
+    global tela_atual
+    tela_atual = lambda: tela_resultado(faixa, indice_resultado)
     limpar_tela()
-    azul_topo_logo()
-    barra_zoom()
+    azul_topo_logo(pai)
+    barra_zoom(pai)
+    c = corpo(pai)
 
     # Faixa de exibição para RESULTADOS usa chave diferente de PERGUNTAS
     faixa_resultado = faixa
