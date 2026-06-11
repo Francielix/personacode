@@ -2,8 +2,8 @@ import customtkinter as ctk
 from PIL import Image
 import os
 
-from docs import PERGUNTAS
-from docs import RESULTADOS
+from docs.perguntas import PERGUNTAS
+from docs.resultados import RESULTADOS
 
 #configurações da tela
 ctk.set_appearance_mode("system") 
