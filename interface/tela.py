@@ -11,6 +11,11 @@ janela = ctk.CTk()
 janela.title("PersonaCode")
 janela.resizable(True, True)
 
+estado = {
+    "nome": "",
+    "idade": 0
+}
+
 #Zoom na tela
 zoom = 1.0
 
