@@ -16,33 +16,33 @@ estado = {
     "idade": 0
 }
 
-#Zoom na tela
+# Zoom na tela
 
 zoom = 1.0
 tela_atual = None
  
-def f(tamanho: int) -> int:
+def f(tamanho: int):
     #Retorna o tamanho de fonte escalado pelo zoom atual
     return max(8, round(tamanho * zoom))
  
-def w(tamanho: int) -> int:
+def w(tamanho: int):
     #Retorna largura/altura de widget escalada pelo zoom atual
     return max(10, round(tamanho * zoom))
  
-def logo_size() -> tuple:
+def logo_size():
     return (round(450 * zoom), round(225 * zoom))
  
-def _atualizar_zoom(novo_zoom: float) -> None:
+def _atualizar_zoom(novo_zoom: float):
     global zoom
     zoom = round(novo_zoom, 1)
     if tela_atual:
         tela_atual()
  
-def aumentar_zoom() -> None:
+def aumentar_zoom():
     if zoom < 2.0:
         _atualizar_zoom(zoom + 0.1)
  
-def diminuir_zoom() -> None:
+def diminuir_zoom():
     if zoom > 0.6:
         _atualizar_zoom(zoom - 0.1)
 
