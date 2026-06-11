@@ -42,10 +42,10 @@ def azul_topo():
 caminho_da_imagem = os.path.join(os.path.dirname(__file__), "interface", "logo2.png")
 
 def azul_topo_logo():
-    frame_1 = azul_topo()  # ← recebe o frame
+    frame_1 = azul_topo()  #recebe o frame
     logo = ctk.CTkImage(Image.open(caminho_da_imagem), size=(500, 225))
-    label_logo = ctk.CTkLabel(frame_1, image=logo, text="", fg_color="transparent")  # ←  faz ficar dentro do frame_1
-    label_logo.image = logo  # ← evita a imagem sumir
+    label_logo = ctk.CTkLabel(frame_1, image=logo, text="", fg_color="transparent")  # faz ficar dentro do frame_1
+    label_logo.image = logo  #  evita a imagem sumir
     label_logo.place(relx=0.5, rely=0.6, anchor="center")
 
 def tela_inicio() -> None:
