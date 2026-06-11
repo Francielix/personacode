@@ -108,9 +108,9 @@ Itallo Gustavo
 
 Klever S. Baliza
 
-Yuri 
+Yuri Aguiar
 
-Breno 
+Breno Henrique
 
 Guilherme Roque 
 
