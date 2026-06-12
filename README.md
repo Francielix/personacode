@@ -22,15 +22,25 @@ O classificador de perfil do PersonaCode é inteiramente baseado na **Tríade do
 
 # ---------- Fluxograma do projeto ----------
 
-[🔗 Ver fluxograma no Figma](https://www.figma.com/board/c6q1O2t2PPfnbraqI81k63/Untitled?node-id=0-1&t=jzPKI5iRTQi65pPr-1)
+[ Ver fluxograma no Figma](https://www.figma.com/board/c6q1O2t2PPfnbraqI81k63/Untitled?node-id=0-1&t=jzPKI5iRTQi65pPr-1)
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 # ---------- Sitemap do projeto ----------
 
-[🔗 Ver sitemap no Figma](https://www.figma.com/board/e511WVHkhReGzajyPpTbLY/Site-Map?node-id=0-1&t=ahM6U177wzQsGpA4-1)
+[ Ver sitemap no Figma](https://www.figma.com/board/e511WVHkhReGzajyPpTbLY/Site-Map?node-id=0-1&t=ahM6U177wzQsGpA4-1)
 
 -------------------------------------------------------------------------------------------------------------------------------------------
+# ---------- Protótipo Figma ----------
+
+[ Ver no Figma](https://www.figma.com/design/PGD0oyw3zSQSj14E72zN2L/Sem-t%C3%ADtulo?node-id=0-1&t=8h67wW9bmtUTThJK-1)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+# ---------- Apresentação Canva ----------
+
+[ Ver no Figma](https://canva.link/dmj0igbwnn9330d)
+
+-------------------------------------------------------------------------------------------------------------
 
 # ---------- Estrutura do Projeto ----------
 
