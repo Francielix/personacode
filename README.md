@@ -75,7 +75,10 @@ python main.py
 | Biblioteca | Versão | Finalidade |
 
 | customtkinter | ≥ 5.2.0 | Interface gráfica moderna |
-| Pillow | ≥ 10.0.0 | Carregamento de imagens |
+| Pillow | ≥ 10.0.0 | Carregamento e manipulação de imagens |
+| tkinter | Python Standard Library | Criação da interface gráfica |
+| os | Python Standard Library | Manipulação de diretórios e arquivos |
+| messagebox | tkinter | Exibição de mensagens de alerta e validação |
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
