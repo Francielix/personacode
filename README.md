@@ -109,12 +109,16 @@ O PersonaCode foi desenvolvido por uma equipe composta por 8 integrantes, que at
 
 | **Juliano de Carvalho Lacerda**         | Pesquisa e estudo da biblioteca CustomTkinter para auxiliar no desenvolvimento da interface do PersonaCode, elaboração das respostas dos questionários, implementação das respostas no sistema, organização da estrutura do projeto e contribuição na manutenção, correção e aprimoramento do código-fonte da aplicação.                                          
 
-| **Itallo Gustavo Teixeira Gomes Frota** | Desenvolvimento da lógica de cálculo dos resultados do PersonaCode, implementação da funcionalidade de seleção de tema e elaboração do sitemap do projeto.                                                                                                                                                                                                        
+| **Itallo Gustavo Teixeira Gomes Frota** | Desenvolvimento da lógica de cálculo dos resultados do PersonaCode, implementação da funcionalidade de seleção de tema e elaboração do sitemap do projeto.             
+
 | **Klever Santos Baliza**                | Participação na elaboração das perguntas dos questionários do PersonaCode, revisão e correção das perguntas e respostas, integração das respostas ao sistema, correção de erros identificados durante o desenvolvimento, organização da estrutura do projeto e suporte técnico aos demais integrantes da equipe.
 
-| **Yuri Aguiar Junqueira Gomes**         | Desenvolvimento das telas iniciais de boas-vindas, nome e idade do PersonaCode, criação do protótipo interativo no Figma e participação na construção da identidade visual e da logo do projeto.                                                                                                                                                                  
-| **Breno Henrique Vieira Silva**         | Desenvolvimento da tela de instruções do PersonaCode, criação do protótipo interativo no Figma e desenvolvimento da logo e dos elementos visuais da identidade do projeto.                                                                                                                                                                                        
-| **Guilherme da Silva Roque**            | Desenvolvimento da lógica responsável pela identificação e determinação das faixas etárias dos usuários no PersonaCode, contribuindo para a personalização dos questionários e resultados.                                                                                                                                                                       
+| **Yuri Aguiar Junqueira Gomes**         | Desenvolvimento das telas iniciais de boas-vindas, nome e idade do PersonaCode, criação do protótipo interativo no Figma e participação na construção da identidade visual e da logo do projeto.   
+
+| **Breno Henrique Vieira Silva**         | Desenvolvimento da tela de instruções do PersonaCode, criação do protótipo interativo no Figma e desenvolvimento da logo e dos elementos visuais da identidade do projeto.                     
+
+| **Guilherme da Silva Roque**            | Desenvolvimento da lógica responsável pela identificação e determinação das faixas etárias dos usuários no PersonaCode, contribuindo para a personalização dos questionários e resultados.    
+
 | **Tallita Souza dos Santos**            | Implementação da funcionalidade de zoom da interface, contribuindo para a acessibilidade e usabilidade do PersonaCode.                                                                                                                                                                                                                                            
 
 # ---------- Histórico de Desenvolvimento ---------- 
