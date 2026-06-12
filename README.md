@@ -43,10 +43,9 @@ PersonaCode/
 ├── interface/
 │   └── logo2.png          # Logo da aplicação
     └── tela.py            # Interface gráfica principal
+├── README.md              # Documentação e especificações
 ├── main.py                # Arquivo de execução do programa
-├── requirements.txt       # Dependências do projeto
-├── .gitignore             # Arquivos ignorados pelo Git
-└── README.md              # Documentação do projeto
+└── requirements.txt       # Dependências do projeto 
 ```
 
 -------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,26 +94,40 @@ O PersonaCode classifica o usuário em um dos 5 perfis da Tríade do Tempo, adap
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 # ---------- Equipe ----------
+# 👥 Equipe de Desenvolvimento
 
-O PersonaCode foi desenvolvido por uma equipe de 8 pessoas, com cada membro contribuindo diretamente no código e nas diferentes frentes do projeto — desde a pesquisa da metodologia até a implementação de recursos de acessibilidade.
+O PersonaCode foi desenvolvido por uma equipe composta por 8 integrantes, que atuaram de forma colaborativa nas etapas de pesquisa, planejamento, prototipação, desenvolvimento, testes e documentação do sistema.
 
-| Colaboradores
+# ---------- Integrantes e Contribuições ----------
 
-Franciele Couto 
+| Integrante                              | Contribuições para o PersonaCode  
 
-Juliano Lacerda
+| **Franciele Couto Costa Souza**         | Pesquisa sobre a metodologia Tríade do Tempo que fundamenta o PersonaCode, elaboração das perguntas e respostas dos questionários, desenvolvimento do fluxograma do sistema, implementação do recurso de scroll, integração de messagebox para validações, criação e gerenciamento do repositório principal no GitHub e apoio na estruturação geral da aplicação. 
 
-Itallo Gustavo 
+| **Juliano de Carvalho Lacerda**         | Pesquisa e estudo da biblioteca CustomTkinter para auxiliar no desenvolvimento da interface do PersonaCode, elaboração das respostas dos questionários, implementação das respostas no sistema, organização da estrutura do projeto e contribuição na manutenção, correção e aprimoramento do código-fonte da aplicação.                                          
 
-Klever S. Baliza
+| **Itallo Gustavo Teixeira Gomes Frota** | Desenvolvimento da lógica de cálculo dos resultados do PersonaCode, implementação da funcionalidade de seleção de tema e elaboração do sitemap do projeto.                                                                                                                                                                                                        
+| **Klever Santos Baliza**                | Participação na elaboração das perguntas dos questionários do PersonaCode, revisão e correção das perguntas e respostas, integração das respostas ao sistema, correção de erros identificados durante o desenvolvimento, organização da estrutura do projeto e suporte técnico aos demais integrantes da equipe.
 
-Yuri Aguiar
+| **Yuri Aguiar Junqueira Gomes**         | Desenvolvimento das telas iniciais de boas-vindas, nome e idade do PersonaCode, criação do protótipo interativo no Figma e participação na construção da identidade visual e da logo do projeto.                                                                                                                                                                  
+| **Breno Henrique Vieira Silva**         | Desenvolvimento da tela de instruções do PersonaCode, criação do protótipo interativo no Figma e desenvolvimento da logo e dos elementos visuais da identidade do projeto.                                                                                                                                                                                        
+| **Guilherme da Silva Roque**            | Desenvolvimento da lógica responsável pela identificação e determinação das faixas etárias dos usuários no PersonaCode, contribuindo para a personalização dos questionários e resultados.                                                                                                                                                                       
+| **Tallita Souza dos Santos**            | Implementação da funcionalidade de zoom da interface, contribuindo para a acessibilidade e usabilidade do PersonaCode.                                                                                                                                                                                                                                            
 
-Breno Henrique
+# ---------- Histórico de Desenvolvimento ---------- 
 
-Guilherme Roque 
+Antes da criação da versão final do repositório, a equipe utilizou um repositório preliminar para estudos, testes e experimentação do código. Esse ambiente inicial foi utilizado para compreender o funcionamento do Git e GitHub, validar ideias, realizar testes de implementação e estruturar as primeiras versões da aplicação.
 
-Tallita
+https://github.com/Francielix/Classificador-de-perfil-pass-
+
+Após a consolidação da arquitetura e das funcionalidades principais, foi criado o repositório oficial do PersonaCode, reunindo a versão organizada e definitiva do projeto para desenvolvimento, documentação e apresentação.
+
+## Metodologia de Trabalho
+
+O desenvolvimento do PersonaCode foi realizado de forma colaborativa utilizando Git e GitHub para controle de versão. As atividades foram distribuídas entre os integrantes de acordo com suas habilidades e áreas de atuação, abrangendo pesquisa, levantamento de requisitos, prototipação, desenvolvimento, acessibilidade, testes, identidade visual e documentação.
+
+A colaboração entre os membros permitiu a construção de uma aplicação focada no autoconhecimento, oferecendo uma experiência personalizada para crianças, adolescentes, adultos e idosos.
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
